@@ -6,14 +6,16 @@ import AnaCard from './AnaCard.astro';
 <section class="cards">
   {
     cards.map(({ id, name, description, image, category, level }) => (
-      <AnaCard
-        id={id}
-        name={name}
-        image={image}
-        category={category}
-        description={description}
-        level={level}
-      />
+      <div>
+        <AnaCard
+          id={id}
+          name={name}
+          image={image}
+          category={category}
+          description={description}
+          level={level}
+        />
+      </div>
     ))
   }
 </section>
@@ -27,3 +29,8 @@ import AnaCard from './AnaCard.astro';
     flex-wrap: wrap;
   }
 </style>
+
+<script>
+  import { AnaCard } from './ana-card.wc';
+  customElements.define(AnaCard.componentName, AnaCard);
+</script>

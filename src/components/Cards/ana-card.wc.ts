@@ -75,6 +75,7 @@ export class AnaCard extends HTMLElement {
   render() {
     this.shadowRoot!.innerHTML = /* html */ `
       <style>${AnaCard.styles}</style>
+    <div class="card-container">
       <div class="card" data-card-id="${this.cardId}" data-card-level="${
       this.cardLevel
     }">
@@ -101,6 +102,7 @@ export class AnaCard extends HTMLElement {
 
         <div class="card-shine"></div>
       </div>
+    </div>
       `;
   }
 
@@ -112,9 +114,13 @@ export class AnaCard extends HTMLElement {
         position: relative;
         aspect-ratio: 15 / 23;
         width: var(--size);
-        container: card / inline-size;
         box-sizing: border-box;
         border-radius: var(--border-radius);
+        resize: both;
+      }
+
+      .card-container {
+        container: card / inline-size;
       }
 
       .card {
@@ -153,6 +159,10 @@ export class AnaCard extends HTMLElement {
 
         @starting-style {
           opacity: 0;
+        }
+
+        @container card (width <= 150px) {
+          background: gold;
         }
 
         &::after {
