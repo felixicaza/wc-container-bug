@@ -1,0 +1,29 @@
+---
+import { cards } from '@data/cards';
+import AnaCard from './AnaCard.astro';
+---
+
+<section class="cards">
+  {
+    cards.map(({ id, name, description, image, category, level }) => (
+      <AnaCard
+        id={id}
+        name={name}
+        image={image}
+        category={category}
+        description={description}
+        level={level}
+      />
+    ))
+  }
+</section>
+
+<style>
+  section.cards {
+    gap: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
